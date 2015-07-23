@@ -17,7 +17,13 @@ app.use(bodyParser.urlencoded({extended: false}));
         
 app.get('/', indexController.index);
 
-// app.get('/submit')
+app.post('/submit', indexController.submit);
+
+app.get('/subsFull', indexController.subsFull);
+
+app.get('/submissions', indexController.viewSubs);
+
+app.post('/vote/:slug', indexController.vote);
 
 //============================== server ==============================//
         

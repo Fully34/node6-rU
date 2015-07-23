@@ -1,15 +1,18 @@
 extends layout
 
 block content
-	h1 Hello Boulder!
 
     .form-container
 
-        form(method="POST")
-            input(type='text' name='name')
-            input(type='text' name='vid')
-            input(type='text' name='title')
-            input(type='text' name='description')
-            input(type='submit') Submit
+        form(method='POST' action='/submit')
+            label(for='name') Name:
+            input.form-field.name(type='text' name='name')
+            label(for='vid') Vid:
+            input.form-field.vid(type='text' name='vid')
+            label(for='title') Title:
+            input.form-field.title(type='text' name='title')
+            label(for='description') Description:
+            input.form-field.description(type='text' name='description')
+            input(type='submit') 
 
-        
+        a(href='/submissions') Current Submissions

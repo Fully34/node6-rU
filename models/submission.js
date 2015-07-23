@@ -7,28 +7,22 @@ function Sub(name, vid, title, description) {
     this.name        = name;
     this.vid         = vid;
     this.title       = title;
+    this.slug        = title.trim().toLowerCase().replace(/ /g, '-');
     this.description = description;
-    this.vote        = null;
+    this.vote        = 0;
 }
 
 function addSub(name, vid, title, description) {
 
     var sub = new Sub(name, vid, title, description);
 
-    if (subContainer.length <= 8) {
-
-        subContainer.push(sub);        
-
-    } else {
-
-        alert("The submissions are full!");
-    }
+    subContainer.push(sub);        
 }
 
 module.exports = {
 
     subContainer : subContainer,
-    Sub          : sub,
+    Sub          : Sub,
     addSub       : addSub
 }
 
