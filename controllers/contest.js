@@ -46,16 +46,16 @@ var contestController = {
     }, 
 
     winner : function(req, res) {
-
+// 
         // passing the contest array from the contest method to here
         var contestArr = currentContestArr;
 
-        console.log(submission.contestContainer)
+        // console.log(submission.contestContainer)
 
         var firstSlug = contestArr[0].slug;
-        console.log(firstSlug)
+        // console.log(firstSlug)
         var secondSlug = contestArr[1].slug;
-        console.log(secondSlug)
+        // console.log(secondSlug)
 
         // eliminates second object > therefore looking at secondSlug in here
         if(contestArr[0].vote > contestArr[1].vote) {
@@ -68,9 +68,20 @@ var contestController = {
                 var currentObj = submission.contestContainer[i];
                 var currentSlug = currentObj.slug;
 
-                if (currentSlug = secondSlug) {
+                if (currentSlug === secondSlug) {
 
                     submission.contestContainer.splice(i, 1);
+                }
+            }
+
+            for (var i = 0; i < submission.subContainer.length; i ++) {
+
+                var currentObj = submission.subContainer[i];
+                var currentSlug = currentObj.slug;
+
+                if (currentSlug === secondSlug) {
+
+                    currentObj.contest = false;
                 }
             }
 
@@ -90,13 +101,27 @@ var contestController = {
                 var currentObj = submission.contestContainer[i];
                 var currentSlug = currentObj.slug;
 
-                if (currentSlug = firstSlug) {
+                if (currentSlug === firstSlug) {
 
                     submission.contestContainer.splice(i, 1);
                 }
             }
+
+            for (var i = 0; i < submission.subContainer.length; i ++) {
+
+                var currentObj = submission.subContainer[i];
+                var currentSlug = currentObj.slug;
+
+                if (currentSlug === firstSlug) {
+
+                    currentObj.contest = false;
+                }
+            }
         }
-        // console.log(submission.contestContainer)
+        console.log('-----------------------------------')
+        console.log(submission.subContainer)
+        console.log('-----------------------------------')
+        console.log(submission.contestContainer)
 
         res.render('fight-winner', {contestArr : contestArr});
     }

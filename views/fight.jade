@@ -4,8 +4,9 @@ block content
     h1 IT'S BATTLE TIME!!!
     .content-container
         for subs in contestArr
-
-            
+            if contestArr.length === 1
+                h1 INTRODUCING YOUR GRAND CHAMPION, #{subs.title.toUpperCase()}!!!!!!!!
+                        
             .submission-container.green
 
                 h2 Submittor: #{subs.name}
@@ -14,6 +15,18 @@ block content
                 h5 #{subs.description}
 
                 iframe(width='560' height='315' src='#{subs.vid}' frameborder='0' allowfullscreen)
+            
+            form.reset(method='POST', )
+            else 
+                .submission-container.green
 
-        form(method='POST' action='/fight-winner')
-            button.fight-check(type='submit') WHO SHALL BE VICTORIOUS?!?!
+                    h2 Submittor: #{subs.name}
+                
+                    h4 #{subs.title}
+                    h5 #{subs.description}
+
+                    iframe(width='560' height='315' src='#{subs.vid}' frameborder='0' allowfullscreen)
+                
+
+                form(method='POST' action='/fight-winner')
+                    button.fight-check(type='submit') WHO SHALL BE VICTORIOUS?!?!

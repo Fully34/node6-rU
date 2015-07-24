@@ -29,7 +29,7 @@ block content
                     form(method='POST' action='/vote/#{subs.slug}')
                         input(type='submit' value='Vote For Me!')
                     span Upvotes:  #{subs.vote}          
-            else 
+            else if (!subs.contest)
                 .submission-container.red
                     h1 DEFEATED!!!
                     block description

@@ -2,9 +2,11 @@ extends layout
 
 block content
     h1 AND THE WINNER IS!!!
-    
+    a.battle-time(href='/submissions') Go back to the submissions! 
     .content-container
     for subs in contestArr
+        if subs.length === 1
+            
         if subs.contest
             .winner-container
                 h2 BOOM! THIS GUY!!!

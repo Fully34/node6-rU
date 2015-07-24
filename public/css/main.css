@@ -16,12 +16,14 @@
 }
 
 .winner-container {
+    text-align: center;
     background-color: #74DF40;
     border: 2px solid green;
     width: 100%;
 }
 
 .loser-container {
+    text-align: center;
     background-color: #D64A4B;
     border: 2px solid red;
     width: 100%; 
