@@ -19,12 +19,12 @@ var indexController = {
             var name        = req.body.name;
             var vid         = req.body.vid;
             var title       = req.body.title;
-            var description = req.body.description;   
+            var description = req.body.description;
 
             // add the sub based on the object created
             submission.addSub(name, vid, title, description);
 
-            console.log(submission.subContainer);
+            // console.log(submission.subContainer);
             //redirect to the homepage
             res.redirect('/')
 
@@ -41,9 +41,33 @@ var indexController = {
 
     viewSubs : function(req, res) {
 
-        res.render('submissions', {subContainer : submission.subContainer})
+        var subContainer = submission.subContainer;
+        var contestContainer = submission.contestContainer;
 
-        console.log(submission.subContainer);
+        //need to compare the subContainer with the contestContainer
+            // if the object is missing from the contestContainer, that means it is out of the contest and should be red
+        for (var i = 0; i < subContainer.length; i++) {
+
+            var thisSub = subContainer[i];
+            var subSlug = subContainer[i].slug;
+
+            // if _.find() returns undefined, that means the element is not in the contest
+            var inContest =  _.find(contestContainer, function(el) {
+
+                return el.slug === subSlug;
+            });
+
+            if (inContest) {
+
+                thisSub.contest = true;
+
+            } else {
+
+                thisSub.contest = false;
+            }
+        };
+
+        res.render('submissions', {subContainer : subContainer, contestContainer : contestContainer});
     },
 
     vote     : function(req, res) {

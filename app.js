@@ -4,6 +4,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var indexController = require('./controllers/index.js');
+var contestController = require('./controllers/contest.js')
 
 //============================== config ==============================//
         
@@ -25,6 +26,11 @@ app.get('/submissions', indexController.viewSubs);
 
 app.post('/vote/:slug', indexController.vote);
 
+app.get('/need-more-contestants', contestController.notEnough)
+
+app.get('/fight', contestController.contest)
+
+app.post('/fight-winner', contestController.winner)
 //============================== server ==============================//
         
 var server = app.listen(9001, function() {

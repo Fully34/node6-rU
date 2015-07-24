@@ -1,6 +1,62 @@
+.body {
+    text-align: center;
+}
+
+.content-container {
+    display: inline-block;
+    margin: 0 auto;
+    min-width: 1200px;
+    text-align: center;
+}
 .submission-container {
 
     display: inline-block;
     padding: 5px;
     margin: 5px;
+}
+
+.winner-container {
+    background-color: #74DF40;
+    border: 2px solid green;
+    width: 100%;
+}
+
+.loser-container {
+    background-color: #D64A4B;
+    border: 2px solid red;
+    width: 100%; 
+    opacity: 0.5;
+}
+.red {
+    background-color: #D64A4B;
+    border: 2px solid red;
+}
+
+.green {
+    background-color: #74DF40;
+    border: 2px solid green;
+}
+
+.spacer {
+    height: 19px;
+}
+
+.battle-time {
+    font-size: 1.5em;
+    display: block;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.overlord-title {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+}
+
+.fight-check {
+    margin: 20px;
+    padding: 50px;
+    font-size: 1.6em;
+    text-align: center;
 }

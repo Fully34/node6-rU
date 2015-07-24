@@ -1,20 +1,39 @@
 extends layout
 
+block description
+    h2 Submittor: #{subs.name}
+    
+    h4 #{subs.title}
+    h5 #{subs.description}
+
+    iframe(width='560' height='315' src='#{subs.vid}' frameborder='0' allowfullscreen)
+
+
 block content
 
-    h1 THESE ARE THE CURRENT SUBMISSIONS!!!
+    h1.overlord-title THESE ARE THE CURRENT SUBMISSIONS!!!
 
-    for subs in subContainer
+    if(subContainer.length >= 8 )
 
-        .submission-container
-            h2 Submittor: #{subs.name}
-            
-            h4 #{subs.title}
-            h5 #{subs.description}
+        a.battle-time(href='/fight') LET THEM FIGHT!
 
-            iframe(width='560' height='315' src='#{subs.vid}' frameborder='0' allowfullscreen)
+    .content-container
 
-            form(method='POST' action='/vote/#{subs.slug}')
-                input(type='submit' value='Vote For Me!')
+        for subs in subContainer
 
-            span Upvotes:  #{subs.vote}
+            if (subs.contest)
+                .submission-container.green
+                    h1 STILL IN THE GAME!!!
+                    block description   
+                    //- button will only be visible on in the game videos
+                    form(method='POST' action='/vote/#{subs.slug}')
+                        input(type='submit' value='Vote For Me!')
+                    span Upvotes:  #{subs.vote}          
+            else 
+                .submission-container.red
+                    h1 DEFEATED!!!
+                    block description
+                    //-Maintain dimensions with spacer div so the defeated videos are all still the same height as the in the game videos
+                    .spacer
+                    span I'M DEAD!
+
