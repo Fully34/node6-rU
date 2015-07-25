@@ -124,9 +124,15 @@ var contestController = {
         console.log(submission.contestContainer)
 
         res.render('fight-winner', {contestArr : contestArr});
+    },
+
+    reset : function(req, res) {
+
+        submission.subContainer = [];
+        submission.contestContainer = [];
+
+        res.redirect('/');
     }
-
-
 }
 
 module.exports = contestController

@@ -1,7 +1,7 @@
 var _ = require('underscore')
 //============================== submission data ==============================//
 
-var subContainer = 
+var subContainer =
 [ { name: 'chris',
     vid: 'https://www.youtube.com/embed/pmoYLtObCtY',
     title: 'Shadow of the Colossus OST',
@@ -59,7 +59,8 @@ var subContainer =
     vote: 3,
     contest : true } ];
 
-var contestContainer = [ { name: 'chris',
+var contestContainer =
+[ { name: 'chris',
     vid: 'https://www.youtube.com/embed/pmoYLtObCtY',
     title: 'Shadow of the Colossus OST',
     slug: 'shadow-ost',
@@ -107,6 +108,13 @@ var contestContainer = [ { name: 'chris',
     slug: 'chrono-trigger-ost',
     description: 'My favorite game of all time!',
     vote: 20,
+    contest : true },
+  { name: 'Chris',
+    vid: 'https://www.youtube.com/embed/tBWl9p0fH28',
+    title: 'Mega Man X OST',
+    slug: 'mega-man-x-ost',
+    description: 'AHHH! The memories!',
+    vote: 3,
     contest : true } ];
 
 

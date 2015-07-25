@@ -31,6 +31,8 @@ app.get('/need-more-contestants', contestController.notEnough)
 app.get('/fight', contestController.contest)
 
 app.post('/fight-winner', contestController.winner)
+
+app.get('/reset', contestController.reset)
 //============================== server ==============================//
         
 var server = app.listen(9001, function() {

@@ -1,23 +1,14 @@
 extends layout
 
 block content
-    h1 IT'S BATTLE TIME!!!
+    h1.overlord-title IT'S BATTLE TIME!!!
     .content-container
         for subs in contestArr
+
             if contestArr.length === 1
-                h1 INTRODUCING YOUR GRAND CHAMPION, #{subs.title.toUpperCase()}!!!!!!!!
+
+                h1.overlord-title INTRODUCING YOUR GRAND CHAMPION, #{subs.title.toUpperCase()}!!!!!!!!
                         
-            .submission-container.green
-
-                h2 Submittor: #{subs.name}
-            
-                h4 #{subs.title}
-                h5 #{subs.description}
-
-                iframe(width='560' height='315' src='#{subs.vid}' frameborder='0' allowfullscreen)
-            
-            form.reset(method='POST', )
-            else 
                 .submission-container.green
 
                     h2 Submittor: #{subs.name}
@@ -27,6 +18,20 @@ block content
 
                     iframe(width='560' height='315' src='#{subs.vid}' frameborder='0' allowfullscreen)
                 
+                form.reset(method='POST' action='/reset')
+                    button.fight-check(type='submit') RESET THE CONTEST!!!
 
-                form(method='POST' action='/fight-winner')
-                    button.fight-check(type='submit') WHO SHALL BE VICTORIOUS?!?!
+            else
+
+                .submission-container.green
+
+                    h2 Submittor: #{subs.name}
+                
+                    h4 #{subs.title}
+                    h5 #{subs.description}
+
+                    iframe(width='560' height='315' src='#{subs.vid}' frameborder='0' allowfullscreen)
+                
+        if contestArr.length > 1
+            form(method='POST' action='/fight-winner')
+                button.fight-check(type='submit') WHO SHALL BE VICTORIOUS?!?!
